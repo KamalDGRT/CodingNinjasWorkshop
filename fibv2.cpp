@@ -2,18 +2,32 @@
 
 using  namespace std;
 
-void fib(int n)
+int fibo_helper(int n, int *ans)
 {
-	int a = -1, b = 1 , c ,i;
+	if(n==0 || n== 1)
+	  return n;
+	  
+	if(ans[n]!=-1)
+	   return ans[n];
 	
-	for(i =0 ; i < n ; i++)
-	{
-		c = a + b;
-		cout<<c<< " ";
-		a = b;
-		b = c;
-	}
+	int sA1 = fibo_helper(n-1,ans);
+	int sA2 = fibo_helper(n-1,ans);		
+	int mA = sA1 + sA2;
+	
+	ans [n] = mA;
+	return mA;
 }
+
+int fibo2(int n)
+{
+  int * ans = new int[n+1];
+  
+  for(int i =0; i<(n+1); i++)
+    ans[i] = -1;	
+
+  return fibo_helper(n,ans);
+}
+
 
 int main()
 {
@@ -21,7 +35,7 @@ int main()
 	
 	cout<<"Enter a number : ";
 	cin>>n;
-	fib(n);
+	cout<< fibo2(n);
 	
 	return 0;
 }
