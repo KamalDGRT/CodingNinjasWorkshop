@@ -36,7 +36,10 @@ int minsteps_helper(int n, int *ans){
 	}
 	if (ans[n]!=-1)
 	  return ans[n];
+	  
+	int y = z = INT_MAX;
 }
+
 int main()
 {
 	int n;
